@@ -118,6 +118,8 @@ FastPaySdkManager.registerFastPayEventListener(FastPayEventListener eventListene
 
 
 ### 注意事项
+#### applicationId配置
+sdk会对接入方的app进行过滤，未知的app将无法正常使用，所以，接入方需联系我司，提供接入方android app的applicationId，只有我司配置接入权限之后，才能正常使用
 
 #### 混淆配置
 如果项目中有代码混淆配置，请将以下配置加入混淆规则中：
