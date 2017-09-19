@@ -22,6 +22,7 @@ allprojects {
 ```
 dependencies{
 	compile 'me.andpay.ma.sdk:fastpay:1.0.0'
+	compile 'me.andpay.ma.sdk:fastpay-ext-eco:1.0.0'
 }
 ```
 
@@ -30,6 +31,12 @@ dependencies{
 <dependency>
   <groupId>me.andpay.ma.sdk</groupId>
   <artifactId>fastpay</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+<dependency>
+  <groupId>me.andpay.ma.sdk</groupId>
+  <artifactId>fastpay-ext-eco</artifactId>
   <version>1.0.0</version>
   <type>pom</type>
 </dependency>
@@ -46,10 +53,11 @@ repositories{
 }
 dependencies{
 	compile(name:'fastpay-1.0.0',ext:'aar')
+	compile(name:'fastpay-ext-eco-1.0.0',ext:'aar')
 }
 ```
 #### sdk权限要求
-所有权限均已在sdk中声明，sdk已经适配了6.0的动态权限申请，接入方无需为权限申请添加额外代码（请知晓：启动sdk时不会强制获取权限，但是在交易过程中，为确保交易安全，可能会强制获取部分权限，否则可能导致交易无法进行）
+所有权限均已在sdk中声明，sdk已经适配了6.0的动态权限申请，接入方无需为权限申请添加额外代码（请知晓：启动sdk时不会强制获取权限，但是在交易过程中，为确保交易安全，可能会强制获取部分权限，权限获取失败可能导致流程无法进行）
 
 ##### 1、通用权限
 ```
@@ -88,6 +96,10 @@ FastPaySdkInnerManager.init(FastPaySdkConfig config)
 
 mobileNo：用户手机号（可选）
 
+longitude：经度（可选，由于sdk未依赖第三方包，定位可能失败而导致无法交易）
+
+latitude：纬度（可选）
+
 ```
 FastPaySdkManager.startFastPayModule(Activity activity,Map<String,Object> params);
 ```
@@ -97,14 +109,24 @@ sdk在运行过程中会发布一些关键性的事件，接入方可以注册�
 ```
 FastPaySdkManager.registerFastPayEventListener(FastPayEventListener eventListener);
 ```
+事件类型：
+
+```
+交易成功：eventType: TS, eventData:{txnId}(map的键值)
+交易失败：eventType: TF, eventData:{message}
+```
+
 
 ### 注意事项
 
 #### 混淆配置
-如果项目中有代码混淆配置，请将一下配置加入混淆规则中：
+如果项目中有代码混淆配置，请将以下配置加入混淆规则中：
 
 ```
 -keepclassmembers class me.andpay.ma.sdk.**{
+    *;
+}
+-keepclassmembers class com.payeco.android.plugin.**{
     *;
 }
 ```
