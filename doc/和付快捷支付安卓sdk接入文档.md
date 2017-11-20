@@ -100,6 +100,8 @@ longitude：经度（可选，由于sdk未依赖第三方包，定位可能失�
 
 latitude：纬度（可选）
 
+env：环境参数（可选stage1-测试环境，pro-生产环境，默认为生产环境）
+
 ```
 FastPaySdkManager.startFastPayModule(Activity activity,Map<String,Object> params);
 ```
