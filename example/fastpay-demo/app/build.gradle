@@ -37,6 +37,6 @@ dependencies {
 //    compile 'me.andpay.ma.sdk:fastpay:1.0.0'
 //    compile 'me.andpay.ma.sdk:fastpay-ext-eco:1.0.0'
     //本地aar包接入
-    compile(name:'fastpay-1.0.0',ext:'aar')
+    compile(name:'fastpay-1.0.1',ext:'aar')
     compile(name:'fastpay-ext-eco-1.0.0',ext:'aar')
 }

@@ -21,7 +21,7 @@ allprojects {
 
 ```
 dependencies{
-	compile 'me.andpay.ma.sdk:fastpay:1.0.0'
+	compile 'me.andpay.ma.sdk:fastpay:1.0.1'
 	compile 'me.andpay.ma.sdk:fastpay-ext-eco:1.0.0'
 }
 ```
@@ -31,7 +31,7 @@ dependencies{
 <dependency>
   <groupId>me.andpay.ma.sdk</groupId>
   <artifactId>fastpay</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 <dependency>
@@ -43,7 +43,7 @@ dependencies{
 ```
 
 ##### 下载sdk导入
-将下载的fastpay-1.0.0.aar拷贝到module的libs目录，并在module的build.gradle中填下如下配置：
+将下载的fastpay-1.0.1.aar拷贝到module的libs目录，并在module的build.gradle中填下如下配置：
 
 ```
 repositories{
@@ -52,7 +52,7 @@ repositories{
     }
 }
 dependencies{
-	compile(name:'fastpay-1.0.0',ext:'aar')
+	compile(name:'fastpay-1.0.1',ext:'aar')
 	compile(name:'fastpay-ext-eco-1.0.0',ext:'aar')
 }
 ```
@@ -118,6 +118,9 @@ FastPaySdkManager.registerFastPayEventListener(FastPayEventListener eventListene
 
 
 ### 注意事项
+#### 环境切换
+实例app中有stage1、pro两个环境可供测试，每次切换环境前，请先重启app(杀掉app重新打开)，进入app后点击相关环境按钮，即可切换到相应的环境
+
 #### applicationId配置
 sdk会对接入方的app进行过滤，未知的app将无法正常使用，所以，接入方需联系我司，提供接入方android app的applicationId，只有我司配置接入权限之后，才能正常使用
 
