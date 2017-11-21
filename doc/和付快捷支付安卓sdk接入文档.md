@@ -130,7 +130,7 @@ sdk会对接入方的app进行过滤，未知的app将无法正常使用，所�
 如果项目中有代码混淆配置，请将以下配置加入混淆规则中：
 
 ```
--keepclassmembers class me.andpay.ma.sdk.**{
+-keepclassmembers class me.andpay.ma.fastpay.sdk.**{
     *;
 }
 -keepclassmembers class com.payeco.android.plugin.**{

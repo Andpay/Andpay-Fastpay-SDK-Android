@@ -23,3 +23,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keepclassmembers class me.andpay.ma.fastpay.sdk.**{
+    *;
+}
+-keepclassmembers class com.payeco.android.plugin.**{
+    *;
+}

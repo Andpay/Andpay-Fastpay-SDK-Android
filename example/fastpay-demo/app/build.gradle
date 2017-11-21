@@ -11,10 +11,19 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            storeFile file('../debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -34,7 +43,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     //jecenter依赖接入
-//    compile 'me.andpay.ma.sdk:fastpay:1.0.0'
+//    compile 'me.andpay.ma.sdk:fastpay:1.0.1'
 //    compile 'me.andpay.ma.sdk:fastpay-ext-eco:1.0.0'
     //本地aar包接入
     compile(name:'fastpay-1.0.1',ext:'aar')
